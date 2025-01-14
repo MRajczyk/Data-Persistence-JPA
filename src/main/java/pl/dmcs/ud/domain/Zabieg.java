@@ -1,11 +1,11 @@
 package pl.dmcs.ud.domain;
 
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 
 import java.time.LocalDateTime;
 
+@Entity
+@Table(name="zabiegi")
 public class Zabieg {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

@@ -1,9 +1,9 @@
 package pl.dmcs.ud.domain;
 
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 
+@Entity
+@Table(name="naprawa_zabieg")
 public class NaprawaZabieg {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
