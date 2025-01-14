@@ -11,16 +11,21 @@ public class Samochod {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private Long idKlient;
-    private Long idModel;
+
+    @ManyToOne
+    @JoinColumn(name = "id_model", nullable = false)
+    private ModelSamochod model;
+
     private Integer rokProdukcji;
+    @Column(name = "numer_rejestracyjny", nullable = false)
     private String numerRejestracyjny;
 
     public Samochod() {}
 
-    public Samochod(Long id, Long idKlient, Long idModel, Integer rokProdukcji, String numerRejestracyjny) {
+    public Samochod(Long id, Long idKlient, ModelSamochod model, Integer rokProdukcji, String numerRejestracyjny) {
         this.id = id;
         this.idKlient = idKlient;
-        this.idModel = idModel;
+        this.model = model;
         this.rokProdukcji = rokProdukcji;
         this.numerRejestracyjny = numerRejestracyjny;
     }
@@ -41,14 +46,6 @@ public class Samochod {
         this.idKlient = idKlient;
     }
 
-    public Long getIdModel() {
-        return idModel;
-    }
-
-    public void setIdModel(Long idModel) {
-        this.idModel = idModel;
-    }
-
     public Integer getRokProdukcji() {
         return rokProdukcji;
     }
@@ -63,5 +60,13 @@ public class Samochod {
 
     public void setNumerRejestracyjny(String numerRejestracyjny) {
         this.numerRejestracyjny = numerRejestracyjny;
+    }
+
+    public ModelSamochod getModel() {
+        return model;
+    }
+
+    public void setModel(ModelSamochod model) {
+        this.model = model;
     }
 }
