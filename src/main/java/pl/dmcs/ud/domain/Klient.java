@@ -2,6 +2,8 @@ package pl.dmcs.ud.domain;
 
 import jakarta.persistence.*;
 
+import java.util.List;
+
 @Entity
 @Table(name="klienci")
 public class Klient {
@@ -12,6 +14,9 @@ public class Klient {
     private String nazwisko;
     private String nrTelefonu;
     private String email;
+
+    @OneToMany(mappedBy = "wlasciciel", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Samochod> listaSamochodow;
 
     public Klient() {}
 

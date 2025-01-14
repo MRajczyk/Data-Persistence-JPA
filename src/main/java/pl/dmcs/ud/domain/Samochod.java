@@ -2,7 +2,7 @@ package pl.dmcs.ud.domain;
 
 import jakarta.persistence.*;
 
-import java.time.LocalDate;
+import java.util.List;
 
 @Entity
 @Table(name="samochody")
@@ -10,7 +10,6 @@ public class Samochod {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private Long idKlient;
 
     @ManyToOne
     @JoinColumn(name = "id_model", nullable = false)
@@ -20,12 +19,16 @@ public class Samochod {
     @Column(name = "numer_rejestracyjny", nullable = false)
     private String numerRejestracyjny;
 
+    @ManyToOne
+    @JoinColumn(name = "id_klient", nullable = false)
+    private Klient wlasciciel;
+
     public Samochod() {}
 
-    public Samochod(Long id, Long idKlient, ModelSamochod model, Integer rokProdukcji, String numerRejestracyjny) {
+    public Samochod(Long id, Klient wlasciciel, ModelSamochod model, Integer rokProdukcji, String numerRejestracyjny) {
         this.id = id;
-        this.idKlient = idKlient;
         this.model = model;
+        this.wlasciciel = wlasciciel;
         this.rokProdukcji = rokProdukcji;
         this.numerRejestracyjny = numerRejestracyjny;
     }
@@ -38,12 +41,12 @@ public class Samochod {
         this.id = id;
     }
 
-    public Long getIdKlient() {
-        return idKlient;
+    public Klient getWlasciciel() {
+        return wlasciciel;
     }
 
-    public void setIdKlient(Long idKlient) {
-        this.idKlient = idKlient;
+    public void setWlasciciel(Klient wlasciciel) {
+        this.wlasciciel = wlasciciel;
     }
 
     public Integer getRokProdukcji() {
