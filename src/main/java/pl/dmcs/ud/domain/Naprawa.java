@@ -3,6 +3,7 @@ package pl.dmcs.ud.domain;
 import jakarta.persistence.*;
 
 import java.time.LocalDate;
+import java.util.List;
 
 @Entity
 @Table(name="naprawy")
@@ -10,8 +11,31 @@ public class Naprawa {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private Long idSamochod;
-    private Long idStanowisko;
+
+    @ManyToOne
+    @JoinColumn(name = "id_samochod", nullable = false)
+    private Samochod samochod;
+
+    @ManyToOne
+    @JoinColumn(name = "id_stanowisko", nullable = false)
+    private Stanowisko stanowisko;
+
+    @ManyToMany
+    @JoinTable(
+            name = "naprawa_zabieg",
+            joinColumns = @JoinColumn(name = "id_naprawa"),
+            inverseJoinColumns = @JoinColumn(name = "id_zabieg")
+    )
+    private List<Zabieg> listaZabiegow;
+
+    @ManyToMany
+    @JoinTable(
+            name = "naprawa_pracownik",
+            joinColumns = @JoinColumn(name = "id_naprawa"),
+            inverseJoinColumns = @JoinColumn(name = "id_pracownik")
+    )
+    private List<Pracownik> listaPracownikow;
+
     private LocalDate dataPrzyjecia;
     private LocalDate wyznaczonaDataOdbioru;
     private LocalDate faktycznaDataOdbioru;
@@ -20,12 +44,12 @@ public class Naprawa {
 
     public Naprawa() {}
 
-    public Naprawa(Long id, Long idSamochod, Long idStanowisko, LocalDate dataPrzyjecia,
+    public Naprawa(Long id, Samochod samochod, Stanowisko stanowisko, LocalDate dataPrzyjecia,
                    LocalDate wyznaczonaDataOdbioru, LocalDate faktycznaDataOdbioru,
                    LocalDate dataRozpoczeciaNaprawy, LocalDate dataZakonczeniaNaprawy) {
         this.id = id;
-        this.idSamochod = idSamochod;
-        this.idStanowisko = idStanowisko;
+        this.samochod = samochod;
+        this.stanowisko = stanowisko;
         this.dataPrzyjecia = dataPrzyjecia;
         this.wyznaczonaDataOdbioru = wyznaczonaDataOdbioru;
         this.faktycznaDataOdbioru = faktycznaDataOdbioru;
@@ -41,20 +65,20 @@ public class Naprawa {
         this.id = id;
     }
 
-    public Long getIdSamochod() {
-        return idSamochod;
+    public Samochod getSamochod() {
+        return samochod;
     }
 
-    public void setIdSamochod(Long id_klient) {
-        this.idSamochod = id_klient;
+    public void setSamochod(Samochod samochod) {
+        this.samochod = samochod;
     }
 
-    public Long getIdStanowisko() {
-        return idStanowisko;
+    public Stanowisko getStanowisko() {
+        return stanowisko;
     }
 
-    public void setIdStanowisko(Long id_model) {
-        this.idStanowisko = id_model;
+    public void setStanowisko(Stanowisko stanowisko) {
+        this.stanowisko = stanowisko;
     }
 
     public LocalDate getDataPrzyjecia() {
@@ -95,5 +119,13 @@ public class Naprawa {
 
     public void setDataZakonczeniaNaprawy(LocalDate dataZakonczeniaNaprawy) {
         this.dataZakonczeniaNaprawy = dataZakonczeniaNaprawy;
+    }
+
+    public List<Zabieg> getListaZabiegow() {
+        return listaZabiegow;
+    }
+
+    public void setListaZabiegow(List<Zabieg> listaZabiegow) {
+        this.listaZabiegow = listaZabiegow;
     }
 }

@@ -2,23 +2,29 @@ package pl.dmcs.ud.domain;
 
 import jakarta.persistence.*;
 
+import java.util.List;
+
 @Entity
 @Table(name="pracownicy")
 public class Pracownik {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private Long rolaId;
+
+    private String rola;
     private String imie;
     private String nazwisko;
     private String nrTelefonu;
     private String email;
 
+    @ManyToMany(mappedBy = "listaPracownikow")
+    private List<Naprawa> listaNapraw;
+
     public Pracownik() {}
 
-    public Pracownik(Long id, Long rolaId, String imie, String nazwisko, String nrTelefonu, String email) {
+    public Pracownik(Long id, String rola, String imie, String nazwisko, String nrTelefonu, String email) {
         this.id = id;
-        this.rolaId = rolaId;
+        this.rola = rola;
         this.imie = imie;
         this.nazwisko = nazwisko;
         this.nrTelefonu = nrTelefonu;
@@ -33,12 +39,12 @@ public class Pracownik {
         this.id = id;
     }
 
-    public Long getRolaId() {
-        return rolaId;
+    public String getRola() {
+        return rola;
     }
 
-    public void setRolaId(Long rolaId) {
-        this.rolaId = rolaId;
+    public void setRola(String rola) {
+        this.rola = rola;
     }
 
     public String getImie() {
@@ -71,5 +77,13 @@ public class Pracownik {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public List<Naprawa> getListaNapraw() {
+        return listaNapraw;
+    }
+
+    public void setListaNapraw(List<Naprawa> listaNapraw) {
+        this.listaNapraw = listaNapraw;
     }
 }

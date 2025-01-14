@@ -15,22 +15,27 @@ public class Samochod {
     @JoinColumn(name = "id_model", nullable = false)
     private ModelSamochod model;
 
-    private Integer rokProdukcji;
-    @Column(name = "numer_rejestracyjny", nullable = false)
-    private String numerRejestracyjny;
-
     @ManyToOne
     @JoinColumn(name = "id_klient", nullable = false)
     private Klient wlasciciel;
 
+    private Integer rokProdukcji;
+
+    @Column(name = "numer_rejestracyjny", nullable = false)
+    private String numerRejestracyjny;
+
+    @OneToMany(mappedBy = "samochod", cascade = CascadeType.ALL)
+    private List<Naprawa> naprawy;
+
     public Samochod() {}
 
-    public Samochod(Long id, Klient wlasciciel, ModelSamochod model, Integer rokProdukcji, String numerRejestracyjny) {
+    public Samochod(Long id, Klient wlasciciel, ModelSamochod model, Integer rokProdukcji, String numerRejestracyjny, List<Naprawa> naprawy) {
         this.id = id;
         this.model = model;
         this.wlasciciel = wlasciciel;
         this.rokProdukcji = rokProdukcji;
         this.numerRejestracyjny = numerRejestracyjny;
+        this.naprawy = naprawy;
     }
 
     public Long getId() {
@@ -71,5 +76,13 @@ public class Samochod {
 
     public void setModel(ModelSamochod model) {
         this.model = model;
+    }
+
+    public List<Naprawa> getNaprawy() {
+        return naprawy;
+    }
+
+    public void setNaprawy(List<Naprawa> naprawy) {
+        this.naprawy = naprawy;
     }
 }

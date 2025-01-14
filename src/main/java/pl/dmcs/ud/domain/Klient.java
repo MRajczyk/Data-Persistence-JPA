@@ -15,17 +15,18 @@ public class Klient {
     private String nrTelefonu;
     private String email;
 
-    @OneToMany(mappedBy = "wlasciciel", cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany(mappedBy = "wlasciciel", cascade = CascadeType.ALL)
     private List<Samochod> listaSamochodow;
 
     public Klient() {}
 
-    public Klient(Long id, String imie, String nazwisko, String nrTelefonu, String email) {
+    public Klient(Long id, String imie, String nazwisko, String nrTelefonu, String email, List<Samochod> listaSamochodow) {
         this.id = id;
         this.imie = imie;
         this.nazwisko = nazwisko;
         this.nrTelefonu = nrTelefonu;
         this.email = email;
+        this.listaSamochodow = listaSamochodow;
     }
 
     public void setId(Long id) {
@@ -66,5 +67,13 @@ public class Klient {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public List<Samochod> getListaSamochodow() {
+        return listaSamochodow;
+    }
+
+    public void setListaSamochodow(List<Samochod> listaSamochodow) {
+        this.listaSamochodow = listaSamochodow;
     }
 }
