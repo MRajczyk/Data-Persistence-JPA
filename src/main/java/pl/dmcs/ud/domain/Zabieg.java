@@ -14,18 +14,14 @@ public class Zabieg {
     private String nazwa;
     private Float koszt;
     private String opis;
-    private LocalDateTime czasRozpoczecia;
-    private LocalDateTime czasZakonczenia;
 
     public Zabieg() {}
 
-    public Zabieg(Long id, String nazwa, Float koszt, String opis, LocalDateTime czasRozpoczecia, LocalDateTime czasZakonczenia) {
+    public Zabieg(Long id, String nazwa, Float koszt, String opis) {
         this.id = id;
         this.nazwa = nazwa;
         this.koszt = koszt;
         this.opis = opis;
-        this.czasRozpoczecia = czasRozpoczecia;
-        this.czasZakonczenia = czasZakonczenia;
     }
 
     public Long getId() {
@@ -58,21 +54,5 @@ public class Zabieg {
 
     public void setOpis(String opis) {
         this.opis = opis;
-    }
-
-    public LocalDateTime getCzasRozpoczecia() {
-        return czasRozpoczecia;
-    }
-
-    public void setCzasRozpoczecia(LocalDateTime czasRozpoczecia) {
-        this.czasRozpoczecia = czasRozpoczecia;
-    }
-
-    public LocalDateTime getCzasZakonczenia() {
-        return czasZakonczenia;
-    }
-
-    public void setCzasZakonczenia(LocalDateTime czasZakonczenia) {
-        this.czasZakonczenia = czasZakonczenia;
     }
 }

@@ -9,14 +9,14 @@ public class ModelSamochod {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private String name;
+    private String marka;
     private String model;
 
     public ModelSamochod() {}
 
     public ModelSamochod(Long id, String name, String model) {
         this.id = id;
-        this.name = name;
+        this.marka = name;
         this.model = model;
     }
 
@@ -28,12 +28,12 @@ public class ModelSamochod {
         this.id = id;
     }
 
-    public String getName() {
-        return name;
+    public String getMarka() {
+        return marka;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setMarka(String name) {
+        this.marka = name;
     }
 
     public String getModel() {

@@ -1,5 +1,6 @@
 package pl.dmcs.ud.domain;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 
 import java.util.List;
@@ -16,6 +17,7 @@ public class Klient {
     private String email;
 
     @OneToMany(mappedBy = "wlasciciel", cascade = CascadeType.ALL)
+    @JsonBackReference
     private List<Samochod> listaSamochodow;
 
     public Klient() {}

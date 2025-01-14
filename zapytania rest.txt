@@ -1,0 +1,11 @@
+GET
+localhost:8080/api/naprawy/pracownik/id/1
+
+GET
+localhost:8080/api/naprawy/pracownik/imie/Kacper
+
+GET
+localhost:8080/api/naprawy/odbior/data/2025-01-15
+
+GET
+localhost:8080/api/naprawy/samochod/model/Focus

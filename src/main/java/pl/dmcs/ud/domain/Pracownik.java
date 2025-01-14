@@ -1,5 +1,6 @@
 package pl.dmcs.ud.domain;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 
 import java.util.List;
@@ -18,6 +19,7 @@ public class Pracownik {
     private String email;
 
     @ManyToMany(mappedBy = "listaPracownikow")
+    @JsonBackReference
     private List<Naprawa> listaNapraw;
 
     public Pracownik() {}

@@ -1,8 +1,11 @@
 package pl.dmcs.ud.domain;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.List;
 
 @Entity
@@ -18,35 +21,38 @@ public class Naprawa {
 
     @ManyToOne
     @JoinColumn(name = "id_stanowisko", nullable = false)
+    @JsonManagedReference
     private Stanowisko stanowisko;
 
     @ManyToMany
     @JoinTable(
-            name = "naprawa_zabieg",
+            name = "naprawy_zabiegi",
             joinColumns = @JoinColumn(name = "id_naprawa"),
             inverseJoinColumns = @JoinColumn(name = "id_zabieg")
     )
+    @JsonManagedReference
     private List<Zabieg> listaZabiegow;
 
     @ManyToMany
     @JoinTable(
-            name = "naprawa_pracownik",
+            name = "naprawy_pracownicy",
             joinColumns = @JoinColumn(name = "id_naprawa"),
             inverseJoinColumns = @JoinColumn(name = "id_pracownik")
     )
+    @JsonBackReference
     private List<Pracownik> listaPracownikow;
 
-    private LocalDate dataPrzyjecia;
-    private LocalDate wyznaczonaDataOdbioru;
-    private LocalDate faktycznaDataOdbioru;
-    private LocalDate dataRozpoczeciaNaprawy;
-    private LocalDate dataZakonczeniaNaprawy;
+    private LocalDateTime dataPrzyjecia;
+    private LocalDateTime wyznaczonaDataOdbioru;
+    private LocalDateTime faktycznaDataOdbioru;
+    private LocalDateTime dataRozpoczeciaNaprawy;
+    private LocalDateTime dataZakonczeniaNaprawy;
 
     public Naprawa() {}
 
-    public Naprawa(Long id, Samochod samochod, Stanowisko stanowisko, LocalDate dataPrzyjecia,
-                   LocalDate wyznaczonaDataOdbioru, LocalDate faktycznaDataOdbioru,
-                   LocalDate dataRozpoczeciaNaprawy, LocalDate dataZakonczeniaNaprawy) {
+    public Naprawa(Long id, Samochod samochod, Stanowisko stanowisko, LocalDateTime dataPrzyjecia,
+                   LocalDateTime wyznaczonaDataOdbioru, LocalDateTime faktycznaDataOdbioru,
+                   LocalDateTime dataRozpoczeciaNaprawy, LocalDateTime dataZakonczeniaNaprawy) {
         this.id = id;
         this.samochod = samochod;
         this.stanowisko = stanowisko;
@@ -81,43 +87,43 @@ public class Naprawa {
         this.stanowisko = stanowisko;
     }
 
-    public LocalDate getDataPrzyjecia() {
+    public LocalDateTime getDataPrzyjecia() {
         return dataPrzyjecia;
     }
 
-    public void setDataPrzyjecia(LocalDate data_przyjecia) {
+    public void setDataPrzyjecia(LocalDateTime data_przyjecia) {
         this.dataPrzyjecia = data_przyjecia;
     }
 
-    public LocalDate getWyznaczonaDataOdbioru() {
+    public LocalDateTime getWyznaczonaDataOdbioru() {
         return wyznaczonaDataOdbioru;
     }
 
-    public void setWyznaczonaDataOdbioru(LocalDate data_odbioru) {
+    public void setWyznaczonaDataOdbioru(LocalDateTime data_odbioru) {
         this.wyznaczonaDataOdbioru = data_odbioru;
     }
 
-    public LocalDate getFaktycznaDataOdbioru() {
+    public LocalDateTime getFaktycznaDataOdbioru() {
         return faktycznaDataOdbioru;
     }
 
-    public void setFaktycznaDataOdbioru(LocalDate faktycznaDataOdbioru) {
+    public void setFaktycznaDataOdbioru(LocalDateTime faktycznaDataOdbioru) {
         this.faktycznaDataOdbioru = faktycznaDataOdbioru;
     }
 
-    public LocalDate getDataRozpoczeciaNaprawy() {
+    public LocalDateTime getDataRozpoczeciaNaprawy() {
         return dataRozpoczeciaNaprawy;
     }
 
-    public void setDataRozpoczeciaNaprawy(LocalDate dataRozpoczeciaNaprawy) {
+    public void setDataRozpoczeciaNaprawy(LocalDateTime dataRozpoczeciaNaprawy) {
         this.dataRozpoczeciaNaprawy = dataRozpoczeciaNaprawy;
     }
 
-    public LocalDate getDataZakonczeniaNaprawy() {
+    public LocalDateTime getDataZakonczeniaNaprawy() {
         return dataZakonczeniaNaprawy;
     }
 
-    public void setDataZakonczeniaNaprawy(LocalDate dataZakonczeniaNaprawy) {
+    public void setDataZakonczeniaNaprawy(LocalDateTime dataZakonczeniaNaprawy) {
         this.dataZakonczeniaNaprawy = dataZakonczeniaNaprawy;
     }
 

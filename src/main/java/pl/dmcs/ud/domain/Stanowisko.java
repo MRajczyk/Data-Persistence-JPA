@@ -2,7 +2,6 @@ package pl.dmcs.ud.domain;
 
 import jakarta.persistence.*;
 
-//todo: pomyslec o jakims przypisaniu wyposazenia(?)
 @Entity
 @Table(name="stanowiska")
 public class Stanowisko {
