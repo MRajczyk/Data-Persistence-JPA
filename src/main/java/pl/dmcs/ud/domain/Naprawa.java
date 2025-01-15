@@ -1,6 +1,5 @@
 package pl.dmcs.ud.domain;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 
@@ -16,11 +15,11 @@ public class Naprawa {
 
     @ManyToOne
     @JoinColumn(name = "id_samochod", nullable = false)
+    @JsonManagedReference
     private Samochod samochod;
 
     @ManyToOne
     @JoinColumn(name = "id_stanowisko", nullable = false)
-    @JsonManagedReference
     private Stanowisko stanowisko;
 
     @ManyToMany
@@ -38,7 +37,7 @@ public class Naprawa {
             joinColumns = @JoinColumn(name = "id_naprawa"),
             inverseJoinColumns = @JoinColumn(name = "id_pracownik")
     )
-    @JsonBackReference
+    @JsonManagedReference
     private List<Pracownik> listaPracownikow;
 
     @Column(nullable = false)
@@ -133,5 +132,13 @@ public class Naprawa {
 
     public void setListaZabiegow(List<Zabieg> listaZabiegow) {
         this.listaZabiegow = listaZabiegow;
+    }
+
+    public List<Pracownik> getListaPracownikow() {
+        return listaPracownikow;
+    }
+
+    public void setListaPracownikow(List<Pracownik> listaPracownikow) {
+        this.listaPracownikow = listaPracownikow;
     }
 }

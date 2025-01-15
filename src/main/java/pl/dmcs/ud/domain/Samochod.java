@@ -1,7 +1,6 @@
 package pl.dmcs.ud.domain;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 
 import java.util.List;
@@ -15,12 +14,11 @@ public class Samochod {
 
     @ManyToOne
     @JoinColumn(name = "id_model", nullable = false)
-    @JsonManagedReference
     private ModelSamochod model;
 
     @ManyToOne
     @JoinColumn(name = "id_klient", nullable = false)
-    @JsonManagedReference
+    @JsonBackReference
     private Klient wlasciciel;
 
     private Integer rokProdukcji;
