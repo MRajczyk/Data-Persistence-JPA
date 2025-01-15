@@ -8,7 +8,10 @@ public class Stanowisko {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
+    @Column(nullable = false)
     private String nazwa;
+
     private String opis;
 
     public Stanowisko() {}

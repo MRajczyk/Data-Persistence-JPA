@@ -12,10 +12,19 @@ public class Pracownik {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @Column(nullable = false)
     private String rola;
+
+    @Column(nullable = false)
     private String imie;
+
+    @Column(nullable = false)
     private String nazwisko;
+
+    @Column(nullable = false, unique = true)
     private String nrTelefonu;
+
+    @Column(nullable = false, unique = true)
     private String email;
 
     @ManyToMany(mappedBy = "listaPracownikow")

@@ -11,8 +11,12 @@ public class Zabieg {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @Column(nullable = false, length = 50)
     private String nazwa;
+
+    @Column(nullable = false)
     private Float koszt;
+
     private String opis;
 
     public Zabieg() {}

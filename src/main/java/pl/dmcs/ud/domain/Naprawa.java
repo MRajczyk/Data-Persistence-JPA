@@ -42,6 +42,7 @@ public class Naprawa {
     @JsonBackReference
     private List<Pracownik> listaPracownikow;
 
+    @Column(nullable = false)
     private LocalDateTime dataPrzyjecia;
     private LocalDateTime wyznaczonaDataOdbioru;
     private LocalDateTime faktycznaDataOdbioru;

@@ -25,7 +25,7 @@ public class Samochod {
 
     private Integer rokProdukcji;
 
-    @Column(name = "numer_rejestracyjny", nullable = false)
+    @Column(name = "numer_rejestracyjny", nullable = false, unique = true)
     private String numerRejestracyjny;
 
     @OneToMany(mappedBy = "samochod", cascade = CascadeType.ALL)

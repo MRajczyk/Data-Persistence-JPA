@@ -11,9 +11,17 @@ public class Klient {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
+    @Column(nullable = false)
     private String imie;
+
+    @Column(nullable = false)
     private String nazwisko;
+
+    @Column(nullable = false)
     private String nrTelefonu;
+
+    @Column(nullable = false)
     private String email;
 
     @OneToMany(mappedBy = "wlasciciel", cascade = CascadeType.ALL)
