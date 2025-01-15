@@ -32,7 +32,7 @@ VALUES
     ('Elektryk', 'Piotr', 'Wiśniewski', '444555666', 'piotr.wisniewski@example.com'),
     ('Lakiernik', 'Adam', 'Nowicki', '777888999', 'adam.nowicki@example.com'),
     ('Diagnosta', 'Katarzyna', 'Czarnecka', '222333444', 'katarzyna.czarnecka@example.com'),
-    ('Mechanik', 'Grzegorz', 'Sobczak', '555666777', 'grzegorz.sobczak@example.com');
+    ('Mechanik', 'Kacper', 'Sobczak', '555666777', 'grzegorz.sobczak@example.com');
 
 -- Dodawanie stanowisk
 INSERT INTO stanowiska (nazwa, opis)
@@ -58,8 +58,8 @@ VALUES
     (1, 1, '2025-01-10 11:10:00', '2025-01-15 08:00:00', '2025-01-15 08:15:00', '2025-01-10 08:00:00', '2025-01-14 08:00:00'),
     (2, 2, '2025-01-12 08:00:00', '2025-01-18 08:00:00', NULL, '2025-01-13 08:00:00', '2025-01-17 08:00:00'),
     (3, 3, '2025-01-14 09:00:00', '2025-01-20 10:00:00', NULL, '2025-01-15 08:00:00', '2025-01-19 08:00:00'),
-    (4, 4, '2025-01-15 10:30:00', '2025-01-22 14:00:00', NULL, '2025-01-16 08:30:00', '2025-01-21 15:00:00'),
-    (5, 5, '2025-01-16 12:00:00', '2025-01-23 16:00:00', NULL, '2025-01-17 09:00:00', '2025-01-22 11:00:00');
+    (4, 4, '2025-01-15 10:30:00', '2025-01-22 14:00:00', '2025-01-23 15:00:00', '2025-01-16 08:30:00', '2025-01-21 15:00:00'),
+    (5, 5, '2025-01-16 12:00:00', '2025-01-23 16:00:00', '2025-01-23 16:00:00', '2025-01-17 09:00:00', '2025-01-22 11:00:00');
 
 -- Przypisanie pracowników do napraw (w przypadku relacji N:M)
 INSERT INTO naprawy_pracownicy (id_naprawa, id_pracownik)
