@@ -2,8 +2,6 @@ package pl.dmcs.ud.domain;
 
 import jakarta.persistence.*;
 
-import java.time.LocalDateTime;
-
 @Entity
 @Table(name="zabiegi")
 public class Zabieg {
