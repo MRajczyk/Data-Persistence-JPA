@@ -2,52 +2,80 @@
 INSERT INTO klienci (imie, nazwisko, nr_telefonu, email)
 VALUES
     ('Jan', 'Kowalski', '123456789', 'jan.kowalski@example.com'),
-    ('Anna', 'Nowak', '987654321', 'anna.nowak@example.com');
+    ('Anna', 'Nowak', '987654321', 'anna.nowak@example.com'),
+    ('Andrzej', 'Zieliński', '456789123', 'andrzej.zielinski@example.com'),
+    ('Ewa', 'Wiśniewska', '789123456', 'ewa.wisniewska@example.com'),
+    ('Piotr', 'Krawczyk', '321654987', 'piotr.krawczyk@example.com');
 
 -- Dodawanie modeli samochodów
 INSERT INTO modele_samochodow (marka, model)
 VALUES
     ('Toyota', 'Corolla'),
-    ('Ford', 'Focus');
+    ('Ford', 'Focus'),
+    ('Volkswagen', 'Golf'),
+    ('Honda', 'Civic'),
+    ('BMW', '3 Series');
 
 -- Dodawanie samochodów
 INSERT INTO samochody (id_model, id_klient, rok_produkcji, numer_rejestracyjny)
 VALUES
     (1, 1, 2015, 'ABC123'),
-    (2, 2, 2020, 'XYZ789');
+    (2, 2, 2020, 'XYZ789'),
+    (3, 3, 2018, 'JKL456'),
+    (4, 4, 2016, 'MNO987'),
+    (5, 5, 2021, 'QRS654');
 
 -- Dodawanie pracowników
 INSERT INTO pracownicy (rola, imie, nazwisko, nr_telefonu, email)
 VALUES
     ('Mechanik', 'Kacper', 'Ziółkowski', '111222333', 'kacper.ziółkowski@example.com'),
-    ('Elektryk', 'Piotr', 'Wiśniewski', '444555666', 'piotr.wisniewski@example.com');
+    ('Elektryk', 'Piotr', 'Wiśniewski', '444555666', 'piotr.wisniewski@example.com'),
+    ('Lakiernik', 'Adam', 'Nowicki', '777888999', 'adam.nowicki@example.com'),
+    ('Diagnosta', 'Katarzyna', 'Czarnecka', '222333444', 'katarzyna.czarnecka@example.com'),
+    ('Mechanik', 'Grzegorz', 'Sobczak', '555666777', 'grzegorz.sobczak@example.com');
 
 -- Dodawanie stanowisk
 INSERT INTO stanowiska (nazwa, opis)
 VALUES
     ('Stanowisko 1', 'Naprawy mechaniczne'),
-    ('Stanowisko 2', 'Naprawy elektryczne');
+    ('Stanowisko 2', 'Naprawy elektryczne'),
+    ('Stanowisko 3', 'Lakierowanie samochodów'),
+    ('Stanowisko 4', 'Diagnostyka komputerowa'),
+    ('Stanowisko 5', 'Wulkanizacja');
 
 -- Dodawanie zabiegów
 INSERT INTO zabiegi (nazwa, koszt, opis)
 VALUES
     ('Wymiana opon', 200, 'Sezonowa wymiana opon'),
-    ('Wymiana oleju', 150, 'Wymiana oleju silnikowego');
+    ('Wymiana oleju', 150, 'Wymiana oleju silnikowego'),
+    ('Lakierowanie drzwi', 400, 'Naprawa lakiernicza uszkodzonych drzwi'),
+    ('Diagnostyka komputerowa', 250, 'Skanowanie systemu i analiza błędów'),
+    ('Wyważanie kół', 100, 'Precyzyjne wyważanie kół samochodu');
 
+-- Dodawanie napraw
 INSERT INTO naprawy (id_samochod, id_stanowisko, data_przyjecia, wyznaczona_data_odbioru, faktyczna_data_odbioru, data_rozpoczecia_naprawy, data_zakonczenia_naprawy)
 VALUES
     (1, 1, '2025-01-10 11:10:00', '2025-01-15 08:00:00', '2025-01-15 08:15:00', '2025-01-10 08:00:00', '2025-01-14 08:00:00'),
-    (2, 2, '2025-01-12 08:00:00', '2025-01-18 08:00:00', NULL, '2025-01-13 08:00:00', '2025-01-17 08:00:00');
+    (2, 2, '2025-01-12 08:00:00', '2025-01-18 08:00:00', NULL, '2025-01-13 08:00:00', '2025-01-17 08:00:00'),
+    (3, 3, '2025-01-14 09:00:00', '2025-01-20 10:00:00', NULL, '2025-01-15 08:00:00', '2025-01-19 08:00:00'),
+    (4, 4, '2025-01-15 10:30:00', '2025-01-22 14:00:00', NULL, '2025-01-16 08:30:00', '2025-01-21 15:00:00'),
+    (5, 5, '2025-01-16 12:00:00', '2025-01-23 16:00:00', NULL, '2025-01-17 09:00:00', '2025-01-22 11:00:00');
 
 -- Przypisanie pracowników do napraw (w przypadku relacji N:M)
 INSERT INTO naprawy_pracownicy (id_naprawa, id_pracownik)
 VALUES
     (1, 1),
-    (2, 2);
+    (2, 2),
+    (3, 3),
+    (4, 4),
+    (5, 5);
 
 -- Przypisanie zabiegów do napraw (w przypadku relacji N:M)
 INSERT INTO naprawy_zabiegi (id_naprawa, id_zabieg)
 VALUES
     (1, 1),
     (1, 2),
-    (2, 2);
+    (2, 2),
+    (3, 3),
+    (4, 4),
+    (5, 5);
